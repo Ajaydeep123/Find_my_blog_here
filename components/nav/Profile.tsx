@@ -27,6 +27,8 @@ export default function Profile(){
         setUser(undefined);
     }
 
+    const isAdmin = user?.user_metadata?.role === "admin"
+
     return(
         <Popover>
             <PopoverTrigger>
@@ -43,14 +45,14 @@ export default function Profile(){
 					<p className="text-sm">{user?.user_metadata.full_name}</p>
 					<p className="text-sm text-gray-500">{user?.user_metadata.email}</p>
 				</div>
-                <Link href="/dashboard">
+                {isAdmin && <Link href="/dashboard">
                     <Button
                         variant="ghost"
                         className="w-full flex justify-between items-center"
                     >
                         Dashboard <DashboardIcon />
                     </Button>
-                </Link>
+                </Link>}
                 <Button
 					variant="ghost"
 					className="w-full flex justify-between items-center"
