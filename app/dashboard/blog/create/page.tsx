@@ -37,7 +37,7 @@ const FormSchema = z.object({
   }),
   is_published:z.boolean(),
   is_premium: z.boolean(),
-}).refine(
+}).refine(                                    //We need to do this inorder to restrict image url to only unsplash
 		(data) => {
 			const image_url = data.image_url;
 			try {
